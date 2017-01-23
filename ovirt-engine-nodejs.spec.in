@@ -1,7 +1,7 @@
 Name: ovirt-engine-nodejs
 Version: @VERSION@
 Release: 1%{?dist}
-Summary: Node.js for oVirt Engine
+Summary: Node.js runtime for oVirt JavaScript applications
 Group: Virtualization/Management
 URL: https://nodejs.org
 License: Multiple
@@ -10,11 +10,11 @@ Source: @SRC@
 ExclusiveArch: x86_64
 
 %description
-Node.js for oVirt Engine
+Node.js runtime for oVirt JavaScript applications.
 
 %install
 mkdir -p %{buildroot}%{_datadir}
-tar -xf %{SOURCE0} -C %{buildroot}%{_datadir}
+tar -xzf %{SOURCE0} -C %{buildroot}%{_datadir}
 mv %{buildroot}%{_datadir}/node-v%{version}-linux-x64 %{buildroot}%{_datadir}/%{name}
 
 %files
@@ -22,6 +22,9 @@ mv %{buildroot}%{_datadir}/node-v%{version}-linux-x64 %{buildroot}%{_datadir}/%{
 %{_datadir}
 
 %changelog
+* Mon Jan 23 2017 Vojtech Szocs <vszocs@redhat.com> - 6.9.4-1
+- Bump Node.js version to 6.9.4.
+
 * Fri Nov 18 2016 Vojtech Szocs <vszocs@redhat.com> - 6.9.1-1
 - Bump Node.js version to 6.9.1.
 

@@ -1,10 +1,10 @@
-#!/bin/sh -e
+#!/bin/sh -ex
 
 # The name, version and source of the package:
 name="ovirt-engine-nodejs"
-version="6.9.1"
-src="node-v${version}-linux-x64.tar.xz"
-url="https://nodejs.org/dist/v${version}/node-v${version}-linux-x64.tar.xz"
+version="6.9.4"
+src="node-v${version}-linux-x64.tar.gz"
+url="https://nodejs.org/dist/v${version}/${src}"
 
 # Download the source:
 if [ ! -f "${src}" ]

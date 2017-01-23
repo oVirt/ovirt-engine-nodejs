@@ -1,0 +1,6 @@
+= ovirt-engine-nodejs
+
+== Summary
+
+This package contains https://nodejs.org[Node.js] binaries needed to build
+oVirt JavaScript applications.
