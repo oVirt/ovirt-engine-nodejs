@@ -1,11 +1,11 @@
 Name: ovirt-engine-nodejs
-Version: @VERSION@
-Release: 1%{?dist}
+Version: 6.9.4
+Release: 2%{?dist}
 Summary: Node.js runtime for oVirt JavaScript applications
 Group: Virtualization/Management
 URL: https://nodejs.org
 License: Multiple
-Source: @SRC@
+Source: https://nodejs.org/dist/v%{version}/node-v%{version}-linux-x64.tar.xz
 
 ExclusiveArch: x86_64
 
@@ -14,7 +14,7 @@ Node.js runtime for oVirt JavaScript applications.
 
 %install
 mkdir -p %{buildroot}%{_datadir}
-tar -xzf %{SOURCE0} -C %{buildroot}%{_datadir}
+tar -xf %{SOURCE0} -C %{buildroot}%{_datadir}
 mv %{buildroot}%{_datadir}/node-v%{version}-linux-x64 %{buildroot}%{_datadir}/%{name}
 
 %files
@@ -22,6 +22,9 @@ mv %{buildroot}%{_datadir}/node-v%{version}-linux-x64 %{buildroot}%{_datadir}/%{
 %{_datadir}
 
 %changelog
+* Wed Feb 1 2017 Greg Sheremeta <gshereme@redhat.com> - 6.9.4-2
+- Utilize oVirt standard CI while using non-templated .spec
+
 * Mon Jan 23 2017 Vojtech Szocs <vszocs@redhat.com> - 6.9.4-1
 - Bump Node.js version to 6.9.4.
 
