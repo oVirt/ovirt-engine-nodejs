@@ -1,3 +1,7 @@
 rpmdevtools
 git
-
+gcc
+gcc-c++
+glibc-devel
+make
+python

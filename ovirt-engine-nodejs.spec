@@ -1,27 +1,41 @@
 Name: ovirt-engine-nodejs
 Version: 6.9.4
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Node.js runtime for oVirt JavaScript applications
 Group: Virtualization/Management
 URL: https://nodejs.org
-License: Multiple
-Source: https://nodejs.org/dist/v%{version}/node-v%{version}-linux-x64.tar.xz
+License: MIT
+Source: https://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz
 
-ExclusiveArch: x86_64
+BuildRequires: gcc
+BuildRequires: gcc-c++
+BuildRequires: glibc-devel
+BuildRequires: make
+BuildRequires: python
 
 %description
 Node.js runtime for oVirt JavaScript applications.
 
+%prep
+%setup -q -n node-v%{version}
+
+%build
+./configure --prefix=%{_datadir}/%{name}
+make %{?_smp_mflags}
+
 %install
-mkdir -p %{buildroot}%{_datadir}
-tar -xf %{SOURCE0} -C %{buildroot}%{_datadir}
-mv %{buildroot}%{_datadir}/node-v%{version}-linux-x64 %{buildroot}%{_datadir}/%{name}
+make install DESTDIR=%{buildroot}
 
 %files
-%license %{_datadir}/%{name}/LICENSE
-%{_datadir}
+%doc CHANGELOG.md
+%doc README.md
+%license LICENSE
+%{_datadir}/%{name}/
 
 %changelog
+* Wed Feb 15 2017 Juan Hernandez <juan.hernandez@redhat.com> - 6.9.4-3
+- Build from source.
+
 * Wed Feb 1 2017 Greg Sheremeta <gshereme@redhat.com> - 6.9.4-2
 - Utilize oVirt standard CI while using non-templated .spec
 
