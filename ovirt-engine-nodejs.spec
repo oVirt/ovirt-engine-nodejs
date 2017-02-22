@@ -1,6 +1,6 @@
 Name: ovirt-engine-nodejs
 Version: 6.9.4
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: Node.js runtime for oVirt JavaScript applications
 Group: Virtualization/Management
 URL: https://nodejs.org
@@ -20,6 +20,12 @@ Node.js runtime for oVirt JavaScript applications.
 %setup -q -n node-v%{version}
 
 %build
+
+# Do not generate debuginfo packages, as that doesn't work when using
+# short build directories, like '/b':
+%define debug_package %{nil}
+
+# Perform the build:
 ./configure --prefix=%{_datadir}/%{name}
 make %{?_smp_mflags}
 
@@ -33,6 +39,9 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/%{name}/
 
 %changelog
+* Wed Feb 22 2017 Juan Hernandez <juan.hernandez@redhat.com> - 6.9.4-4
+- Use a short build directory to avoid build issues.
+
 * Wed Feb 15 2017 Juan Hernandez <juan.hernandez@redhat.com> - 6.9.4-3
 - Build from source.
 
