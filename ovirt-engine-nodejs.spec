@@ -1,6 +1,6 @@
 Name: ovirt-engine-nodejs
-Version: 6.9.4
-Release: 5%{?dist}
+Version: 6.10.3
+Release: 1%{?dist}
 Summary: Node.js runtime for oVirt JavaScript applications
 Group: Virtualization/Management
 URL: https://nodejs.org
@@ -39,6 +39,9 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/%{name}/
 
 %changelog
+* Fri May 12 2017 Greg Sheremeta <gshereme@redhat.com> - 6.10.3-1
+- Bump Node.js version to 6.10.3.
+
 * Wed Feb 22 2017 Juan Hernandez <juan.hernandez@redhat.com> - 6.9.4-5
 - Use 'mktemp' to create the build directory.
 
