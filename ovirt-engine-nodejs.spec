@@ -1,5 +1,5 @@
 Name: ovirt-engine-nodejs
-Version: 6.10.3
+Version: 8.0.0
 Release: 1%{?dist}
 Summary: Node.js runtime for oVirt JavaScript applications
 Group: Virtualization/Management
@@ -39,6 +39,9 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/%{name}/
 
 %changelog
+* Tue May 30 2017 Greg Sheremeta <gshereme@redhat.com> - 8.0.0-1
+- Bump Node.js version to 8.0.0.
+
 * Fri May 12 2017 Greg Sheremeta <gshereme@redhat.com> - 6.10.3-1
 - Bump Node.js version to 6.10.3.
 
