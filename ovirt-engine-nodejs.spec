@@ -1,6 +1,6 @@
 Name: ovirt-engine-nodejs
 Version: 8.0.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Node.js runtime for oVirt JavaScript applications
 Group: Virtualization/Management
 URL: https://nodejs.org
@@ -11,7 +11,8 @@ BuildRequires: gcc
 BuildRequires: gcc-c++
 BuildRequires: glibc-devel
 BuildRequires: make
-BuildRequires: python
+BuildRequires: python2
+BuildRequires: python2-virtualenv
 
 %description
 Node.js runtime for oVirt JavaScript applications.
@@ -26,8 +27,12 @@ Node.js runtime for oVirt JavaScript applications.
 %define debug_package %{nil}
 
 # Perform the build:
+venv="$(mktemp -d)"
+virtualenv "$venv"
+source "$venv/bin/activate"
 ./configure --prefix=%{_datadir}/%{name}
 make %{?_smp_mflags}
+deactivate
 
 %install
 make install DESTDIR=%{buildroot}
@@ -39,6 +44,9 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/%{name}/
 
 %changelog
+* Wed Jun 6 2018 Greg Sheremeta <gshereme@redhat.com> - 8.0.0-2
+- add automation for ci v2 including fc28 support.
+
 * Tue May 30 2017 Greg Sheremeta <gshereme@redhat.com> - 8.0.0-1
 - Bump Node.js version to 8.0.0.
 
