@@ -1,6 +1,6 @@
 Name: ovirt-engine-nodejs
 Version: 8.11.4
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Node.js runtime for oVirt JavaScript applications
 Group: Virtualization/Management
 URL: https://nodejs.org
@@ -44,6 +44,9 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/%{name}/
 
 %changelog
+* Thu May 09 2019 Sandro Bonazzola <sbonazzo@redhat.com> - 8.11.4-3
+- add fc29 builds
+
 * Mon Mar 11 2019 Greg Sheremeta <gshereme@redhat.com> - 8.11.4-2
 - add mapping for 4.3 cq
 
